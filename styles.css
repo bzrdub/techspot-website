@@ -1,0 +1,121 @@
+/* CSS RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #333;
+    background-color: #e9ecef; /* Fondo gris claro */
+}
+
+.header {
+    background-color: #4a90e2; /* Azul brillante */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header nav {
+    margin: 0 auto;
+}
+
+.header nav .navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 600;
+    padding: 12px 20px;
+    text-transform: uppercase; /* Texto en mayúsculas */
+}
+
+.header nav .navbar-nav .nav-link:hover {
+    background-color: #357abd; /* Azul más oscuro */
+    border-radius: 5px;
+}
+
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 30px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 10px; /* Bordes más redondeados */
+    margin: 20px;
+    padding: 20px;
+    width: 20rem;
+    background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%); /* Gradiente sutil */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    max-width: 100%;
+    border-radius: 8px; /* Bordes redondeados en las imágenes */
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    color: #4a90e2; /* Título en azul brillante */
+    margin-bottom: 10px;
+    font-size: 1.5rem; /* Tamaño de fuente del título */
+}
+
+.product-detail, .shopping-cart {
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px; /* Bordes más redondeados */
+    margin: 20px;
+}
+
+footer {
+    background-color: #4a90e2; /* Azul brillante */
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s; /* Transición suave para el color de fondo */
+}
+
+footer:hover {
+    background-color: #357abd; /* Cambia el color de fondo al pasar el ratón */
+}
+
+/* Botones */
+button {
+    background-color: #4a90e2;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background-color: #357abd; /* Azul más oscuro al pasar el ratón */
+    transform: scale(1.05); /* Efecto de escala al pasar el ratón */
+}
+
+/* Estilo para enlaces */
+a {
+    color: #4a90e2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}

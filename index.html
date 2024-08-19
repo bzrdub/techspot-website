@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpot - Inicio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="Screenshot 2024-08-18 190843.jpg" alt="TechSpot Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <main>
+        <div class="container mt-4">
+            <!-- Sección de bienvenida -->
+            <section class="hero">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h1 class="display-4">Bienvenido a TechSpot</h1>
+                        <p class="lead">Explora y compra una amplia gama de productos electrónicos, desde dispositivos móviles hasta equipos de entretenimiento doméstico.</p>
+                        <a class="btn btn-primary btn-lg" href="catalogo.html" role="button">Explorar Catálogo</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección sobre la expansión de la empresa -->
+            <section class="about mt-4">
+                <h2>Acerca de Nosotros</h2>
+                <p>En TechSpot, estamos emocionados de expandir nuestra presencia en línea para ofrecerte una experiencia de compra más completa y conveniente. Nuestro nuevo sitio web interactivo te permite explorar una amplia gama de productos electrónicos, desde los últimos dispositivos móviles hasta los equipos de entretenimiento doméstico más innovadores.</p>
+                <p>Estamos comprometidos a proporcionarte las mejores opciones del mercado, asegurándonos de que encuentres exactamente lo que buscas con facilidad. Ya sea que estés interesado en actualizar tu smartphone, adquirir una nueva tablet, o mejorar tu sistema de cine en casa, TechSpot es tu destino ideal para todas tus necesidades tecnológicas.</p>
+            </section>
+
+            <!-- Sección de productos destacados -->
+           <!-- Sección de productos destacados -->
+<section class="featured-products mt-4">
+    <h2>Productos Destacados</h2>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card product-card">
+                <img src="Apple_iPhone_14_Midnight_1A.jpg" class="card-img-top" alt="Smartphone">
+                <div class="card-body">
+                    <h5 class="card-title">Smartphone iPhone 14 512GB</h5>
+                    <p class="card-text">$699.99</p>
+                    <a href="producto_iphone.html" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card product-card">
+                <img src="images.jpeg" class="card-img-top" alt="Tablet">
+                <div class="card-body">
+                    <h5 class="card-title">Televisor Xiaomi TV A PRO 55" 4K</h5>
+                    <p class="card-text">$399.99</p>
+                    <a href="producto_tv.html" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card product-card">
+                <img src="7F211LT-1-600x600.jpg" class="card-img-top" alt="Notebook">
+                <div class="card-body">
+                    <h5 class="card-title">NOTEBOOK HP 245 G9 R3-3250U 8GB 256GB W11Home</h5>
+                    <p class="card-text">$289.99</p>
+                    <a href="producto_notebook.html" class="btn btn-primary">Ver Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+            <!-- Formulario de registro -->
+            <form action="/register" method="post" class="mt-4">
+                <div class="form-group">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" class="form-control" id="username" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary mb-4">Registrarse</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2024 TechSpot. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.add-to-cart').on('click', function() {
+                let product = {
+                    name: $(this).data('name'),
+                    price: $(this).data('price'),
+                    quantity: 1
+                };
+                
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert('Producto añadido al carrito');
+            });
+        });
+    </script>
+</body>
+</html>

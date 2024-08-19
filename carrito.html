@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpot - Carrito de Compras</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="Screenshot 2024-08-18 190843.jpg" alt="TechSpot Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <main>
+        <div class="container mt-4">
+            <h2>Carrito de Compras</h2>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="cart-items">
+                    <!-- Los elementos del carrito se insertarán aquí dinámicamente -->
+                </tbody>
+            </table>
+            <button class="btn btn-primary mt-2" id="checkout">Finalizar Compra</button>
+        </div>
+    </main>
+
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2024 TechSpot. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function updateCart() {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                let $cartItems = $('#cart-items');
+                $cartItems.empty();
+
+                let total = 0;
+
+                cart.forEach((item, index) => {
+                    let itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+
+                    $cartItems.append(`
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${item.price.toFixed(2)}</td>
+                            <td><input type="number" class="form-control quantity" data-index="${index}" value="${item.quantity}" min="1"></td>
+                            <td>${itemTotal.toFixed(2)}</td>
+                            <td><button class="btn btn-danger btn-sm remove-item" data-index="${index}">Eliminar</button></td>
+                        </tr>
+                    `);
+                });
+
+                $cartItems.append(`
+                    <tr>
+                        <td colspan="3" class="text-right"><strong>Total:</strong></td>
+                        <td colspan="2"><strong>${total.toFixed(2)}</strong></td>
+                    </tr>
+                `);
+            }
+
+            function updateItem(index, quantity) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                if (cart[index]) {
+                    cart[index].quantity = quantity;
+                    localStorage.setItem('cart', JSON.stringify(cart));
+                    updateCart();
+                }
+            }
+
+            function removeItem(index) {
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.splice(index, 1);
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCart();
+            }
+
+            updateCart();
+
+            $(document).on('input', '.quantity', function() {
+                let index = $(this).data('index');
+                let quantity = $(this).val();
+                updateItem(index, quantity);
+            });
+
+            $(document).on('click', '.remove-item', function() {
+                let index = $(this).data('index');
+                removeItem(index);
+            });
+
+            $('#checkout').on('click', function() {
+                alert('Gracias por su compra!');
+                localStorage.removeItem('cart');
+                updateCart();
+            });
+        });
+    </script>
+</body>
+</html>

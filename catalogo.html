@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpot - Catálogo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand" href="index.html">
+                <img src="Screenshot 2024-08-18 190843.jpg" alt="TechSpot Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+        <div class="container mt-4">
+            <section class="product-catalog">
+                <h2>Catálogo de Productos</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="Apple_iPhone_14_Midnight_1A.jpg" class="card-img-top" alt="Smartphone">
+                            <div class="card-body">
+                                <h5 class="card-title">Smartphone iPhone 14 512GB</h5>
+                                <p class="card-text">$699.99</p>
+                                <a href="producto_iphone.html" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="images.jpeg" class="card-img-top" alt="Televisor">
+                            <div class="card-body">
+                                <h5 class="card-title">Televisor Xiaomi TV A PRO 55" 4K</h5>
+                                <p class="card-text">$399.99</p>
+                                <a href="producto_tv.html" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card product-card">
+                            <img src="7F211LT-1-600x600.jpg" class="card-img-top" alt="Notebook">
+                            <div class="card-body">
+                                <h5 class="card-title">Notebook HP 245 G9 R3-3250U 8GB 256GB W11Home</h5>
+                                <p class="card-text">$289.99</p>
+                                <a href="producto_notebook.html" class="btn btn-primary">Ver Detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TechSpot. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            $('.add-to-cart').on('click', function() {
+                let product = {
+                    name: $(this).data('name'),
+                    price: $(this).data('price'),
+                    quantity: 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert('Producto añadido al carrito');
+            });
+        });
+    </script>
+</body>
+</html>

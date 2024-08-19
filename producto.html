@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpot - Detalle del Producto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="index.html">
+                <img src="Screenshot 2024-08-18 190843.jpg" alt="TechSpot Logo" height="40">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="carrito.html">Carrito</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    
+    <main>
+        <div class="container mt-4">
+            <section class="product-detail">
+                <h2>Detalle del Producto</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="Apple_iPhone_14_Midnight_1A.jpg" class="img-fluid" alt="Smartphone">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Smartphone Iphone 14 512gb</h3>
+                        <p class="price">$699.99</p>
+                        <p>Smartphone iPhone 14 512GB
+
+                            El iPhone 14 con 512GB de almacenamiento ofrece una pantalla Super Retina XDR de 6.1 pulgadas, potente chip A15 Bionic, y una cámara dual de 12MP para fotos excepcionales. Disfruta de conectividad 5G y una batería de larga duración con iOS 16. Ideal para quienes buscan lo último en tecnología y rendimiento.</p>
+                        <form id="add-to-cart-form">
+                            <div class="form-group">
+                                <label for="quantity">Cantidad:</label>
+                                <input type="number" id="quantity" name="quantity" value="1" class="form-control" min="1">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Añadir al Carrito</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 TechSpot. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Manejar el evento de agregar al carrito
+        $(document).ready(function() {
+            $('#add-to-cart-form').on('submit', function(e) {
+                e.preventDefault();
+                let quantity = $('#quantity').val();
+                
+                let product = {
+                    name: 'Smartphone Iphone 14 512gb',
+                    price: 699.99,
+                    quantity: parseInt(quantity)
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(product);
+                localStorage.setItem('cart', JSON.stringify(cart));
+
+                alert('Producto añadido al carrito');
+            });
+        });
+    </script>
+</body>
+</html>
